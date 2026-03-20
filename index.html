@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia Patrimonial - Diagnóstico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #001529;
+            --tech-blue: #003a70;
+            --accent-gold: #d4af37;
+            --white: #ffffff;
+            --bg-overlay: rgba(0, 21, 41, 0.88);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0; padding: 0; min-height: 100vh;
+            background-color: var(--primary-blue);
+            background-image: 
+                linear-gradient(var(--bg-overlay), var(--bg-overlay)),
+                url('https://www.transparenttextures.com/patterns/carbon-fibre.png'),
+                radial-gradient(circle at center, var(--tech-blue) 0%, var(--primary-blue) 100%);
+            display: flex; justify-content: center; align-items: center; padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.98);
+            max-width: 700px; width: 100%; padding: 40px;
+            border-radius: 20px; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            border-top: 10px solid var(--accent-gold);
+        }
+
+        h1 { color: var(--primary-blue); text-align: center; margin-bottom: 5px; font-weight: 700; font-size: 24px; text-transform: uppercase; }
+        .subtitle { text-align: center; color: #555; margin-bottom: 25px; font-size: 13px; line-height: 1.5; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        
+        .disclaimer { font-size: 11px; color: #777; font-style: italic; margin-bottom: 20px; text-align: justify; }
+
+        .section { margin-bottom: 18px; }
+        label { display: block; font-weight: 700; margin-bottom: 6px; color: #333; font-size: 12px; text-transform: uppercase; }
+        
+        input, select, textarea {
+            width: 100%; padding: 12px; border: 2px solid #e1e1e1; border-radius: 8px;
+            box-sizing: border-box; font-size: 14px; transition: 0.3s; font-family: 'Montserrat', sans-serif;
+        }
+
+        input:focus, select:focus, textarea:focus { border-color: var(--accent-gold); outline: none; background: #fffdf9; }
+
+        .hidden { display: none; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+        .btn-submit {
+            background: var(--primary-blue); color: white; padding: 18px; border: none;
+            border-radius: 8px; width: 100%; font-size: 16px; font-weight: 700;
+            cursor: pointer; text-transform: uppercase; transition: 0.4s; margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-submit:hover { background: var(--accent-gold); color: var(--primary-blue); transform: translateY(-2px); }
+
+        /* MODAL ZOOM */
+        #modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.92); display: none;
+            justify-content: center; align-items: center; z-index: 9999;
+        }
+
+        #success-modal {
+            background: white; padding: 50px; border-radius: 25px; text-align: center;
+            max-width: 450px; transform: scale(0); opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-bottom: 8px solid var(--accent-gold);
+        }
+
+        #modal-overlay.active #success-modal { transform: scale(1); opacity: 1; }
+
+        .check-icon { font-size: 60px; color: var(--accent-gold); margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Estrategia Patrimonial</h1>
+    <p class="subtitle">Análisis Integral de Blindaje Fiscal y Financiero</p>
+    
+    <p class="disclaimer">
+        Al llenar este formulario estas asintiendo que todos los datos son correctos para ofrecer un buen servicio. 
+        Este diseño permite abrir posibilidades fiscales y legales para blindar su patrimonio y objetivos de vida.
+    </p>
+
+    <form id="mainForm" action="https://formspree.io/f/TU_ID_AQUI" method="POST">
+        
+        <div class="section">
+            <label>Nombre Completo</label>
+            <input type="text" name="Nombre" required placeholder="Juan Pérez">
+        </div>
+
+        <div class="grid-2">
+            <div class="section">
+                <label>Teléfono (10 dígitos)</label>
+                <input type="tel" name="Telefono" pattern="[0-9]{10}" required placeholder="5512345678">
+            </div>
+            <div class="section">
+                <label>Correo Electrónico</label>
+                <input type="email" name="Email" required placeholder="ejemplo@correo.com">
+            </div>
+        </div>
+
+        <div class="section">
+            <label>Estado</label>
+            <select name="Estado" required>
+                <option value="">Selecciona tu estado...</option>
+                <option>Aguascalientes</option><option>Baja California</option><option>Baja California Sur</option>
+                <option>Campeche</option><option>Chiapas</option><option>Chihuahua</option>
+                <option>Ciudad de México</option><option>Coahuila</option><option>Colima</option>
+                <option>Durango</option><option>Estado de México</option><option>Guanajuato</option>
+                <option>Guerrero</option><option>Hidalgo</option><option>Jalisco</option>
+                <option>Michoacán</option><option>Morelos</option><option>Nayarit</option>
+                <option>Nuevo León</option><option>Oaxaca</option><option>Puebla</option>
+                <option>Querétaro</option><option>Quintana Roo</option><option>San Luis Potosí</option>
+                <option>Sinaloa</option><option>Sonora</option><option>Tabasco</option>
+                <option>Tamaulipas</option><option>Tlaxcala</option><option>Veracruz</option>
+                <option>Yucatán</option><option>Zacatecas</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label>Sector de Actividad</label>
+            <select name="Sector" id="sectorSelect" onchange="checkOtroSector()" required>
+                <option value="">Selecciona un sector...</option>
+                <option>Primario: Agricultores, Ganaderos, Pesqueros</option>
+                <option>Salud: Médicos, Dentistas, Nutriólogos, etc.</option>
+                <option>Seguros y Fianzas: Agentes, Asesores Financieros</option>
+                <option>Automotriz: Agente Automotriz</option>
+                <option>Inmobiliario: Bienes Raíces, Arrendadores, Arquitectos</option>
+                <option>Educativo: Maestros y Conferencistas</option>
+                <option>Deporte: Atletas y Jugadores Profesionales</option>
+                <option>Comisionistas: Comerciantes Independientes</option>
+                <option>Tecnológico: Uber, Didi, Influencers, Airbnb, Amazon</option>
+                <option>Alimentos: Restaurantes, Panaderías, Comida Rápida</option>
+                <option value="otro">Otros</option>
+            </select>
+        </div>
+
+        <div id="divOtroSector" class="section hidden">
+            <label>Especifique Sector o Actividad</label>
+            <input type="text" name="Otro_Sector_Cual">
+        </div>
+
+        <div class="section">
+            <label>Nombre de tu Negocio (Opcional)</label>
+            <input type="text" name="Nombre_Negocio">
+        </div>
+
+        <div class="section">
+            <label>¿Estás dado de alta en el SAT?</label>
+            <select name="Estatus_SAT" id="satStatus" onchange="toggleSAT()" required>
+                <option value="">Selecciona una opción...</option>
+                <option value="si">Ya estoy dado de alta</option>
+                <option value="no">No estoy dado de alta</option>
+            </select>
+        </div>
+
+        <div id="campoAlta" class="hidden">
+            <div class="section">
+                <label>Régimen Fiscal</label>
+                <select name="Regimen">
+                    <option value="">Selecciona tu régimen...</option>
+                    <option>Sueldos y Salarios</option>
+                    <option>Empresarial y Profesional (PFAAE)</option>
+                    <option>RESICO (Confianza)</option>
+                    <option>Arrendamiento</option>
+                    <option>Plataformas Tecnológicas</option>
+                    <option>General Personas Morales</option>
+                    <option>RESICO Personas Morales</option>
+                </select>
+            </div>
+            <div class="section">
+                <label>Rango de Ingresos Mensuales</label>
+                <select name="Ingresos">
+                    <option value="">Selecciona rango...</option>
+                    <option>Menos de $10,000.00</option>
+                    <option>Entre $10,000.00 y $30,000.00</option>
+                    <option>Entre $30,000.00 y $50,000.00</option>
+                    <option>Más de $50,000.00</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="campoNuevo" class="hidden">
+            <div class="section">
+                <label>¿Qué proyecto, negocio o servicio vas a ofrecer?</label>
+                <textarea name="Detalle_Proyecto" rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <label>Medio de contacto preferido</label>
+            <select name="Medio_Contacto">
+                <option>WhatsApp</option><option>Llamada Celular</option><option>Teléfono Fijo</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label>Intereses Adicionales</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; font-size: 12px;">
+                <label style="font-weight:400"><input type="checkbox" name="Interes" value="Seguros" style="width:auto"> Seguros</label>
+                <label style="font-weight:400"><input type="checkbox" name="Interes" value="Inversiones" style="width:auto"> Inversiones</label>
+                <label style="font-weight:400"><input type="checkbox" name="Interes" value="BienesRaices" style="width:auto"> Bienes Raíces</label>
+                <label style="font-weight:400"><input type="checkbox" name="Interes" value="Franquicia" style="width:auto"> Franquicia</label>
+                <label style="font-weight:400"><input type="checkbox" name="Interes" value="Blindaje" style="width:auto"> Blindaje Fiscal</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar para diagnóstico</button>
+    </form>
+</div>
+
+<div id="modal-overlay">
+    <div id="success-modal">
+        <div class="check-icon">✦</div>
+        <h2 style="color: var(--primary-blue); margin-bottom: 10px;">¡Tu camino hacia el blindaje fiscal ha comenzado!</h2>
+        <p style="color: #444; line-height: 1.6; font-size: 15px;">
+            Gracias por confiar. Analizaremos tu perfil y diseñaremos tu estrategia personalizada.<br><br>
+            <b>En 24-48 horas, un especialista te contactará.</b>
+        </p>
+    </div>
+</div>
+
+<script>
+    // 1. Lógica de campos condicionales
+    function checkOtroSector() {
+        const sector = document.getElementById('sectorSelect').value;
+        const divOtro = document.getElementById('divOtroSector');
+        divOtro.classList.toggle('hidden', sector !== 'otro');
+    }
+
+    function toggleSAT() {
+        const status = document.getElementById('satStatus').value;
+        document.getElementById('campoAlta').classList.toggle('hidden', status !== 'si');
+        document.getElementById('campoNuevo').classList.toggle('hidden', status !== 'no');
+    }
+
+    // 2. Envío de datos sin recargar la página (AJAX)
+    const form = document.getElementById('mainForm');
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault(); 
+        
+        const formData = new FormData(this);
+        const overlay = document.getElementById('modal-overlay');
+
+        // Mostrar el modal de éxito inmediatamente
+        overlay.style.display = 'flex';
+        setTimeout(() => overlay.classList.add('active'), 100);
+
+        try {
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                // Éxito: El mensaje se queda fijo. No hacemos nada más para que dure.
+                this.reset(); 
+            } else {
+                alert("Error al enviar. Verifica tu conexión.");
+                overlay.style.display = 'none';
+            }
+        } catch (error) {
+            alert("Error de conexión.");
+            overlay.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
